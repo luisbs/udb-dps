@@ -12,9 +12,8 @@
       </div>
       <ul class="list-group list-group-flush" *ngIf="cliente.registros">
         <li class="list-group-item" *ngFor="let item of cliente.registros">
-          {{ item.ocasion }}.
-          Monto de {{ item.monto }}, descuento del {{ item.descuento * 100 }}%
-          Monto final {{ item.monto - (item.monto * item.descuento) }}
+          {{ item.ocasion }}. Servicio con un monto de ${{ item.monto }} y descuento del {{ item.descuento * 100 }}%<br />
+          Monto final de ${{ item.monto - (item.monto * item.descuento) }}
         </li>
       </ul>
     </div>

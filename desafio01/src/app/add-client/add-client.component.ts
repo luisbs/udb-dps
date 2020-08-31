@@ -33,7 +33,7 @@ export class AddClientComponent {
   }
 
   checkName(text: string): boolean {
-    return /^\w+$/g.test(text)
+    return /^[a-zA-Z]+[a-zA-Z ]*$/g.test(text)
   }
 
   onInput(campo: string) {
@@ -61,17 +61,3 @@ export class AddClientComponent {
   }
 }
 
-/**
- * addRegistro(dui: string, monto: number): void {
-    const last = this._registros[this._registros.length - 1].ocasion
-    let descuento = 0
-    if (last > 1) descuento = 0.05
-    if (last > 4) descuento = 0.10
-
-    this._registros.push({
-      ocasion: last + 1,
-      descuento,
-      monto
-    })
-  }
- */
