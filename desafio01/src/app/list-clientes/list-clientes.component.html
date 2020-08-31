@@ -1,0 +1,22 @@
+<div class="row">
+  <div class="col-12 col-md-6 col-lg-3" *ngFor="let cliente of clientes">
+    <div class="card">
+      <h4 class="card-header">
+        <small class="text-muted mr-2">{{ cliente.dui }}</small>{{ cliente.name }}
+      </h4>
+      <div class="card-body">
+        <p class="card-text">
+          Su vehiculo es un '{{ cliente.vehiculo }}' y ha realizado '{{ cliente.registros ? cliente.registros.length : 0 }}' visitas.
+        </p>
+        <p class="card-text" *ngIf="!cliente.registros || cliente.registros.length < 1">No se han registrado visitas.</p>
+      </div>
+      <ul class="list-group list-group-flush" *ngIf="cliente.registros">
+        <li class="list-group-item" *ngFor="let item of cliente.registros">
+          {{ item.ocasion }}.
+          Monto de {{ item.monto }}, descuento del {{ item.descuento * 100 }}%
+          Monto final {{ item.monto - (item.monto * item.descuento) }}
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
