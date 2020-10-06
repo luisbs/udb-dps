@@ -12,22 +12,22 @@
       </div>
       <div class="modal-body">
         <form class="row my-4" [formGroup]="clientForm" (ngSubmit)="onSubmit()">
-          <div class="col-12 col-sm-6 col-md-3 mb-3">
+          <div class="col-12 col-sm-6 mb-3">
             <label class="form-label">Dui del cliente</label>
             <input class="form-control" type="text" (keyup)="onInput('dui')" formControlName="dui">
             <small class="text-danger" *ngIf="duiInvalido">{{ duiInvalido }}</small>
           </div>
-          <div class="col-12 col-sm-6 col-md-3 mb-3">
+          <div class="col-12 col-sm-6 mb-3">
             <label class="form-label">Nombre del cliente</label>
             <input class="form-control" type="text" (keyup)="onInput('name')" formControlName="name">
             <small class="text-danger" *ngIf="nameInvalido">{{ nameInvalido }}</small>
           </div>
-          <div class="col-12 col-sm-6 col-md-3 mb-3">
+          <div class="col-12 col-sm-6 mb-3">
             <label class="form-label">Vehiculo del cliente</label>
             <input class="form-control" type="text" (keyup)="onInput('vehiculo')" formControlName="vehiculo">
             <small class="text-danger" *ngIf="vehiculoInvalido">{{ vehiculoInvalido }}</small>
           </div>
-          <div class="col-12 col-sm-6 col-md-3 d-flex flex-column">
+          <div class="col-12 col-sm-6 d-flex flex-column">
             <button class="col btn btn-primary" type="submit">Enviar</button>
           </div>
         </form>

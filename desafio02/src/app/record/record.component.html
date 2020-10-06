@@ -12,28 +12,28 @@
       </div>
       <div class="modal-body">
         <form class="row my-4" [formGroup]="recordForm" (ngSubmit)="onSubmit()">
-          <div class="col-12 col-sm-6 col-md-3 mb-3">
+          <div class="col-12 col-sm-6 mb-3">
             <label class="form-label">Cliente</label>
             <select class="form-select" formControlName="clientId" (change)="onInput('clientId')">
               <option *ngFor="let c of clients" [value]="c.id">[{{c.dui}}] {{ c.name }}</option>
             </select>
             <small class="text-danger" *ngIf="clientInvalido">{{ clientInvalido }}</small>
           </div>
-          <div class="col-12 col-sm-6 col-md-3 mb-3">
+          <div class="col-12 col-sm-6 mb-3">
             <label class="form-label">Monto de la reparacion</label>
             <input class="form-control" type="number" formControlName="amount" (keyup)="onInput('amount')" step="1" min="1">
             <small class="text-danger" *ngIf="amountInvalido">{{ amountInvalido }}</small>
           </div>
-          <div class="col-12 col-sm-6 col-md-3 mb-3">
+          <div class="col-12 col-sm-6 mb-3">
             <label class="form-label">Descuento de la reparacion</label>
             <input class="form-control" type="number" formControlName="discount" (keyup)="onInput('discount')" step="0.01" min="0" max="1" >
             <small class="text-danger" *ngIf="discountInvalido">{{ discountInvalido }}</small>
           </div>
-          <div class="col-12 col-sm-6 col-md-3 mb-3">
+          <div class="col-12 col-sm-6 mb-3">
             <label class="form-label">Total</label>
             <input class="form-control" type="number" formControlName="total">
           </div>
-          <div class="col-12 col-sm-6 col-md-3 d-flex flex-column">
+          <div class="col-12 col-sm-6 d-flex flex-column">
             <button type="submit" class="col btn btn-primary">Enviar</button>
           </div>
         </form>
