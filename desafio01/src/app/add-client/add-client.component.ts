@@ -60,4 +60,3 @@ export class AddClientComponent {
     this.clienteForm.setValue({ dui: "", name: "", vehiculo: "" })
   }
 }
-

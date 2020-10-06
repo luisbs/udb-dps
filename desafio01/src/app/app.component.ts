@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 
-import {  Cliente } from './add-client/add-client.component'
+import { Cliente } from './add-client/add-client.component'
 
 export interface ClienteData extends Cliente {
   registros?: Array<{
@@ -17,7 +17,7 @@ export interface ClienteData extends Cliente {
 })
 export class AppComponent {
   title = 'El taller de Don Alex';
-  clientes: Array<ClienteData> = []
+  clientes: Array<Cliente> = []
 
   onAddCliente(value: any) {
     this.clientes.push(value)
