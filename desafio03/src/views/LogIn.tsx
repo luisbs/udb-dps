@@ -35,8 +35,11 @@ export default function LogIn() {
   };
 
   return (
-    <section className="row justify-content-center mt-5">
-      <div className="col-12 col-md-4">
+    <section
+      className="row justify-content-center mt-5"
+      style={{ minWidth: "260px" }}
+    >
+      <div className="w-100">
         <button
           type="button"
           onClick={withGoogle}
