@@ -4,20 +4,17 @@ import { useRoute } from "react-router5";
 import { Auth } from "../plugins/firebase";
 
 import LogIn from "./LogIn";
-
-const views: Record<string, JSX.Element> = {
-  home: <p>Hola mundo!</p>,
-};
+import Sucursales from "./Sucursales";
+import Resultados from "./Resultados";
 
 export default function Main() {
   const { route } = useRoute();
 
-  console.log(Auth.currentUser);
-  if (!Auth.currentUser) return LogIn();
+  const user = Auth.currentUser;
+  if (!user) return <LogIn />;
+  if (route.name === "login") return <LogIn />;
 
-  if (views[route.name]) {
-    return views[route.name];
-  }
-
-  return views.home;
+  if (route.name === "sucursales") return <Sucursales />;
+  if (route.name === "resultados") return <Resultados />;
+  return <Sucursales />;
 }

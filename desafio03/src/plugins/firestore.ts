@@ -100,3 +100,12 @@ export function DefineDocumentModel<T = firebase.firestore.DocumentData>(
     }
   };
 }
+
+export interface SucursalData {
+  nombre: string;
+  ganancias: number;
+  empleados: number;
+  lastModification: firebase.firestore.Timestamp;
+}
+export type SucursalView = SucursalData & { id: string };
+export const SucursalModel = DefineDocumentModel<SucursalData>("sucursal");

@@ -1,46 +1,81 @@
-import * as React from "react";
+import React, { useState } from "react";
 import { useRoute, BaseLink } from "react-router5";
-
-import { nameRoutes } from "../plugins/router";
+import { Auth } from "../plugins/firebase";
+import Toast from "../plugins/Toastr";
 
 export default function Header() {
   const { router } = useRoute();
+  const [logged, setLogged] = useState(false);
+
+  Auth.onAuthStateChanged((user) => {
+    setLogged(!!user);
+  });
+
+  const logout = () =>
+    Auth.signOut()
+      .then(() => {
+        Toast.show("Sesión cerrada", "success");
+        router.navigateToDefault();
+      })
+      .catch(Toast.error);
 
   return (
     <header>
-      <nav className="navbar navbar-expand-lg navbar-light bg-light">
-        <div className="container-fluid">
-          <BaseLink router={router} routeName="home" className="navbar-brand">
-            Home
-          </BaseLink>
-          <button
-            className="navbar-toggler"
-            type="button"
-            data-toggle="collapse"
-            data-target="#navbarSupportedContent"
-            aria-controls="navbarSupportedContent"
-            aria-expanded="false"
-            aria-label="Toggle navigation"
-          >
-            <span className="navbar-toggler-icon"></span>
-          </button>
-          <div className="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul className="navbar-nav mr-auto mb-2 mb-lg-0">
-              {nameRoutes
-                .filter((r) => r !== "home")
-                .map((r, i) => (
-                  <li className="nav-item" key={i}>
-                    <BaseLink
-                      router={router}
-                      routeName={r}
-                      className="nav-link"
-                    >
-                      {r}
-                    </BaseLink>
-                  </li>
-                ))}
-            </ul>
-          </div>
+      <nav className="navbar navbar-expand-lg navbar-light bg-light px-3">
+        <p className="navbar-brand">Desafio practico 03</p>
+        <button
+          type="button"
+          className="navbar-toggler"
+          data-toggle="collapse"
+          data-target="#navbar"
+          aria-controls="navbar"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span className="navbar-toggler-icon"></span>
+        </button>
+        <div className="collapse navbar-collapse" id="navbar">
+          <ul className="navbar-nav ml-auto">
+            <li className="nav-item">
+              <BaseLink
+                router={router}
+                routeName="sucursales"
+                className="nav-link"
+              >
+                Sucursales
+              </BaseLink>
+            </li>
+            <li className="nav-item">
+              <BaseLink
+                router={router}
+                routeName="resultados"
+                className="nav-link"
+              >
+                Resultados
+              </BaseLink>
+            </li>
+            {logged ? (
+              <li className="nav-item">
+                <button
+                  type="button"
+                  className="btn btn-danger"
+                  onClick={logout}
+                >
+                  Cerrar sesión
+                </button>
+              </li>
+            ) : (
+              <li className="nav-item">
+                <BaseLink
+                  router={router}
+                  routeName="login"
+                  className="nav-link"
+                >
+                  Ingresar
+                </BaseLink>
+              </li>
+            )}
+          </ul>
         </div>
       </nav>
     </header>

@@ -5,13 +5,13 @@ import firebase, { Auth } from "../plugins/firebase";
 import Toast from "../plugins/Toastr";
 
 export default function LogIn() {
-  const { navigate } = useRouter();
+  const { navigateToDefault } = useRouter();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
   function ToastAndRedirect() {
     Toast.show("Logueado!!", "success");
-    navigate("/home");
+    navigateToDefault();
   }
   if (Auth.currentUser) ToastAndRedirect();
 
