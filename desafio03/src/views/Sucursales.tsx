@@ -218,8 +218,8 @@ export default class Sucursal extends Component<
                 </h4>
                 <div className="card-body">
                   <p className="card-text">
-                    Esta sucursal cuenta con {sucursal.empleados}
-                    empleados y ${sucursal.ganancias} en ganancias
+                    Esta sucursal cuenta con {sucursal.empleados} empleados y $
+                    {sucursal.ganancias} en ganancias
                   </p>
                 </div>
                 <div className="card-body d-flex justify-content-end">

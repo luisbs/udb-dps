@@ -36,32 +36,42 @@ export default function LogIn() {
 
   return (
     <section className="row justify-content-center mt-5">
-      <div className="col-12 col-md-4 text-center">
-        <form action="#" onSubmit={withEmail}>
-          <input
-            type="email"
-            value={email}
-            placeholder="Correo electronico"
-            onChange={(e) => setEmail(e.target.value)}
-          />
-          <input
-            type="password"
-            value={password}
-            placeholder="Contraseña"
-            onChange={(e) => setPassword(e.target.value)}
-            className="mt-3"
-          />
-          <button type="submit" className="btn btn-outline-primary mt-3">
-            Ingresar con Email
-          </button>
-        </form>
+      <div className="col-12 col-md-4">
         <button
           type="button"
           onClick={withGoogle}
-          className="btn btn-primary mt-3"
+          className="d-block btn btn-primary mx-auto"
         >
-          Ingresar con Google
+          Continuar con Google
         </button>
+        <hr className="w-75 text-dark mx-auto mb-3" />
+        <form onSubmit={withEmail}>
+          <div className="form-group">
+            <label htmlFor="email">Correo</label>
+            <input
+              type="email"
+              value={email}
+              placeholder="Correo electronico"
+              className="form-control"
+              onChange={(e) => setEmail(e.target.value)}
+            />
+          </div>
+          <div className="form-group">
+            <label htmlFor="password">Contraseña</label>
+            <input
+              type="password"
+              value={password}
+              placeholder="Contraseña"
+              className="form-control"
+              onChange={(e) => setPassword(e.target.value)}
+            />
+          </div>
+          <div className="d-flex justify-content-center mt-3">
+            <button type="submit" className="btn btn-outline-primary">
+              Continuar con correo y contraseña
+            </button>
+          </div>
+        </form>
       </div>
     </section>
   );
